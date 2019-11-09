@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const io = require('../socket');
 
 exports.signup = (req, res, next) => {
     const { name, email, password, confirmPassword, device_token, device_type } = req.body;
@@ -57,6 +58,8 @@ exports.login = (req, res, next) => {
                 email: authUser.email
             };
 
+            io.getIO().emit('useronline', authUser);
+
             jwt.sign(payload,
                 'secret',
                 { expiresIn: 7200 },
@@ -70,4 +73,9 @@ exports.login = (req, res, next) => {
         .catch(err => {
             res.status(500).json(err);
         })
+}
+
+exports.logout = (req, res, next) => {
+    req.header = null;
+    req.user = null;
 }
