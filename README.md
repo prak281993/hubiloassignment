@@ -56,4 +56,4 @@
 > Response : Success message along with updated users details.
 
 
-## Socket.io is also implemented. Whenever a user log ins , that user can be seen in the homepage of [https://hubiloapp.herokuapp.com/](https://hubiloapp.herokuapp.com/)
+## Socket.io is also implemented. Whenever a user logs in , that user can be seen in the homepage of [https://hubiloapp.herokuapp.com/](https://hubiloapp.herokuapp.com/)
